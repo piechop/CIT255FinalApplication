@@ -3708,10 +3708,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\paul jr\\documents\\visual studio 2017\\Projects\\CIT255FinalApplication\\DAL\\DAL.csproj",
+      "projectUniqueName": "C:\\Users\\Paul Jr\\Documents\\Paul\\Classes\\CIT255\\CIT255FinalApplication\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "c:\\users\\paul jr\\documents\\visual studio 2017\\Projects\\CIT255FinalApplication\\DAL\\DAL.csproj",
-      "outputPath": "c:\\users\\paul jr\\documents\\visual studio 2017\\Projects\\CIT255FinalApplication\\DAL\\obj\\",
+      "projectPath": "C:\\Users\\Paul Jr\\Documents\\Paul\\Classes\\CIT255\\CIT255FinalApplication\\DAL\\DAL.csproj",
+      "outputPath": "C:\\Users\\Paul Jr\\Documents\\Paul\\Classes\\CIT255\\CIT255FinalApplication\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netstandard1.4"

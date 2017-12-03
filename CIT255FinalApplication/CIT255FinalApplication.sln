@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{165B8C65-8A02-4634-9BD8-A8948834F353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{165B8C65-8A02-4634-9BD8-A8948834F353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{F799AB62-8A1D-4BD2-8ACB-E6CA4ABA8B20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieOrganizer", "Application\MovieOrganizer.csproj", "{F799AB62-8A1D-4BD2-8ACB-E6CA4ABA8B20}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Data", "Data\Data.shproj", "{2EE7F40E-8243-4931-99B7-AC8DB0E4611D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{DD37F65C-7D7B-4B6F-A017-BF06FB82CB70}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
