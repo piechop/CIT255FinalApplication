@@ -624,13 +624,15 @@ namespace MovieOrganizer
             {
                 if (info.Key != ConsoleKey.UpArrow && info.Key != ConsoleKey.DownArrow)
                 {
-                    Console.Write(info.KeyChar);
+                    
                     if (info.Key == ConsoleKey.Backspace && builder.Length > 0)
                     {
                         builder.Remove(builder.Length - 1, 1);
+                        Console.Write("\b \b");
                     }
                     else
                     {
+                        Console.Write(info.KeyChar);
                         builder.Append(info.KeyChar);
                     }
                 }
@@ -732,7 +734,7 @@ namespace MovieOrganizer
             while (!response)
             {
                 ResetAddMovieDisplay();
-                DisplayPromptMessage("Enter the Movie's title: ");
+                DisplayPromptMessage("Enter the Movie's title or press ESC to return to the main menu: ");
                 try
                 {
                     info = GetUserInputWithEscape(Console.ReadKey(true), out userResponse);
@@ -779,7 +781,7 @@ namespace MovieOrganizer
                 {
                     DisplayMessage("If the movie only has one genre, enter 0.");
                 }
-                DisplayPromptMessage("Enter the Movie's genre using a number from the list above: ");
+                DisplayPromptMessage("Enter the Movie's "+ (genres==1?"second":"first") + " genre using a number from the list above or press ESC to return to the main menu: ");
                 try
                 {
                     info = GetUserInputWithEscape(Console.ReadKey(true), out userResponse);
@@ -800,14 +802,20 @@ namespace MovieOrganizer
                         }
                         else if (ValidateEdit(movie, "Genre: ", gen.ToString()))
                         {
-                            if(gen!=Enum.Genre.None)
+                            if(gen!=Enum.Genre.None&&!movie.Genre.Contains(gen))
                             {
                                 movie.Genre.Add(gen);
+                                genres++;
+                                if (genres == 2)
+                                {
+                                    response = true;
+                                }
                             }
-                            genres++;
-                            if(genres==2)
+                            else if(movie.Genre.Contains(gen))
                             {
-                                response = true;
+                                DisplayMessage("");
+                                DisplayMessage("You can only have one type of genre per movie.");
+                                DisplayContinuePrompt();
                             }
                         }
                     }
@@ -837,7 +845,7 @@ namespace MovieOrganizer
             while (!response)
             {
                 ResetAddMovieDisplay();
-                DisplayPromptMessage("Enter the Movie's release date (mm/dd/yyyy): ");
+                DisplayPromptMessage("Enter the Movie's release date (mm/dd/yyyy) or press ESC to return to the main menu: ");
                 try
                 {
                     info = GetUserInputWithEscape(Console.ReadKey(true), out userResponse);
@@ -884,7 +892,7 @@ namespace MovieOrganizer
             while (!response)
             {
                 ResetAddMovieDisplay();
-                DisplayPromptMessage("Enter the Movie's length in minutes: ");
+                DisplayPromptMessage("Enter the Movie's length in minutes or press ESC to return to the main menu: ");
                 try
                 {
                     info = GetUserInputWithEscape(Console.ReadKey(true), out userResponse);
@@ -931,7 +939,7 @@ namespace MovieOrganizer
             while (!response)
             {
                 ResetAddMovieDisplay();
-                DisplayPromptMessage("Enter the Movie's Director: ");
+                DisplayPromptMessage("Enter the Movie's Director or press ESC to return to the main menu: ");
                 try
                 {
                     info = GetUserInputWithEscape(Console.ReadKey(true), out userResponse);
@@ -969,7 +977,7 @@ namespace MovieOrganizer
             while (!response)
             {
                 ResetAddMovieDisplay();
-                DisplayPromptMessage("Enter the Movie's Producer: ");
+                DisplayPromptMessage("Enter the Movie's Producer or press ESC to return to the main menu: ");
                 try
                 {
                     info = GetUserInputWithEscape(Console.ReadKey(true), out userResponse);
