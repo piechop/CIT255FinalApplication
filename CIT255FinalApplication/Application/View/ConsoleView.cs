@@ -1669,6 +1669,8 @@ namespace MovieOrganizer
         /// </summary>
         public static void DisplayWelcomeScreen()
         {
+            Console.SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
             Console.Clear();
             Console.ResetColor();
 
@@ -1679,9 +1681,11 @@ namespace MovieOrganizer
             Console.WriteLine(ConsoleUtil.Center("Welcome to", WINDOW_WIDTH));
             Console.WriteLine(ConsoleUtil.Center("The Movie Organizer", WINDOW_WIDTH));
             Console.WriteLine(ConsoleUtil.FillStringWithSpaces(WINDOW_WIDTH));
-
+            
             Console.ResetColor();
             Console.WriteLine();
+
+            DisplayMessage("Navigate the organizer using the keyboard and follow onscreen instructions.");
 
             DisplayContinuePrompt();
         }

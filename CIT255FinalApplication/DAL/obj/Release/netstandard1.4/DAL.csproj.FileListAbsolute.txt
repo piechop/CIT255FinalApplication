@@ -4,3 +4,4 @@ C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\DAL\bin\Re
 C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\DAL\obj\Release\netstandard1.4\DAL.AssemblyInfo.cs
 C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\DAL\obj\Release\netstandard1.4\DAL.dll
 C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\DAL\obj\Release\netstandard1.4\DAL.pdb
+C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\DAL\obj\Release\netstandard1.4\DAL.csprojResolveAssemblyReference.cache
