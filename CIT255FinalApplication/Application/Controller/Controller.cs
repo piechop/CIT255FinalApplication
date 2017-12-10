@@ -72,6 +72,10 @@ namespace MovieOrganizer
                         DeleteMovie();
                         break;
 
+                    case Enum.ManagerAction.SortQueryMovies:
+                        SortQueryMovies();
+                        break;
+
                     case Enum.ManagerAction.Quit:
                         _active = false;
                         break;
@@ -83,89 +87,166 @@ namespace MovieOrganizer
             ConsoleView.DisplayExitPrompt();
         }
 
+        private static void SortQueryMovies()
+        {
+            MovieBusiness movieBusiness = new MovieBusiness(_repository);
+            bool response = false;
+
+            using (movieBusiness)
+            {
+                while (!response)
+                {
+                    switch (ConsoleView.GetSortQueryChoice(out response))
+                    {
+                        case Enum.ManagerAction.QueryPersonByRole:
+                            Enum.Role role = ConsoleView.RoleChoice();
+                            string name = ConsoleView.GetNameQuery(role);
+                            if(role!=Enum.Role.None && name!=null)
+                            {
+                                ConsoleView.BrowseAllMovies(movieBusiness.QueryPersonByRole(role, name), false, "Query: " + role + " " + name);
+                            }
+                            break;
+                        case Enum.ManagerAction.QueryByFirstLetter:
+                            char letter = ConsoleView.GetLetterQuery();
+                            if (letter != '\u0000')
+                            {
+                                ConsoleView.BrowseAllMovies(movieBusiness.QueryByFirstLetter(letter), false, "Query First Letter: " + letter);
+                            }
+                            break;
+                        case Enum.ManagerAction.QueryByGenre:
+                            Enum.Genre gen = ConsoleView.GetGenreQuery();
+                            if (gen != Enum.Genre.None)
+                            {
+                                ConsoleView.BrowseAllMovies(movieBusiness.QueryByGenre(gen), false, "Query Genre: " + gen);
+                            }
+                            break;
+                        case Enum.ManagerAction.QueryByReleaseYear:
+                            int year = ConsoleView.GetYearQuery();
+                            if (year != -1)
+                            {
+                                ConsoleView.BrowseAllMovies(movieBusiness.QueryByReleaseYear(year), true, "Query Release Year: " + year);
+                            }
+                            break;
+                        case Enum.ManagerAction.SortByAscendingTitle:
+                            ConsoleView.BrowseAllMovies(movieBusiness.SortByAscendingTitle(), false, "Ascending Title");
+                            break;
+                        case Enum.ManagerAction.SortByDescendingTitle:
+                            ConsoleView.BrowseAllMovies(movieBusiness.SortByDescendingTitle(), false, "Descending Title");
+                            break;
+                        case Enum.ManagerAction.SortByAscendingYear:
+                            ConsoleView.BrowseAllMovies(movieBusiness.SortByAscendingYear(), true, "Ascending Year");
+                            break;
+                        case Enum.ManagerAction.SortByDescendingYear:
+                            ConsoleView.BrowseAllMovies(movieBusiness.SortByDescendingYear(), true, "Descending Year");
+                            break;
+                        default:
+                            //ConsoleView.DisplayMessage("");
+                            //ConsoleView.DisplayMessage("");
+                            //ConsoleView.DisplayMessage("It appears you have selected an incorrect choice.");
+                            //ConsoleView.DisplayContinuePrompt();
+                            break;
+                    }
+                }
+            }
+        }
+
         private static void ListAllMovies()
         {
-            MovieBusiness MovieBusiness = new MovieBusiness(_repository);
-            List<Movie> Movies;
+            MovieBusiness movieBusiness = new MovieBusiness(_repository);
+            List<Movie> movies;
 
-            using (MovieBusiness)
+            using (movieBusiness)
             {
-                Movies = MovieBusiness.SelectAll();
-                ConsoleView.DisplayAllMovies(Movies);
-                ConsoleView.DisplayContinuePrompt();
+                movies = movieBusiness.SelectAll();
+                ConsoleView.BrowseAllMovies(movieBusiness.SortByAscendingID(),false,"");
+                //ConsoleView.DisplayContinuePrompt();
             }
         }
 
         private static void DisplayMovieDetail()
         {
-            MovieBusiness MovieBusiness = new MovieBusiness(_repository);
-            List<Movie> Movies;
-            Movie Movie;
-            int MovieID;
+            MovieBusiness movieBusiness = new MovieBusiness(_repository);
+            List<Movie> movies;
+            Movie movie;
+            int movieID;
 
-            using (MovieBusiness)
+            using (movieBusiness)
             {
-                Movies = MovieBusiness.SelectAll();
-                MovieID = ConsoleView.GetMovieID(Movies);
-                Movie = MovieBusiness.SelectById(MovieID);
+                movies = movieBusiness.SelectAll();
+                movieID = ConsoleView.GetMovieID(movieBusiness.SortByAscendingID());
+                if (movieID != -2)
+                {
+                    movie = movieBusiness.SelectById(movieID);
+                    ConsoleView.DisplayMovie(movie);
+                    ConsoleView.DisplayContinuePrompt();
+                }
             }
-
-            ConsoleView.DisplayMovie(Movie);
-            ConsoleView.DisplayContinuePrompt();
         }
 
         private static void AddMovie()
         {
-            MovieBusiness MovieBusiness = new MovieBusiness(_repository);
-            Movie Movie;
+            MovieBusiness movieBusiness = new MovieBusiness(_repository);
+            Movie movie;
 
-            Movie = ConsoleView.AddMovie();
-            using (MovieBusiness)
+            movie = ConsoleView.AddMovie();
+            using (movieBusiness)
             {
-                _repository.Insert(Movie);
+                if(movie!=null)
+                {
+                   movieBusiness.Insert(movie);
+                }
+                
             }
 
-            ConsoleView.DisplayContinuePrompt();
+            //ConsoleView.DisplayContinuePrompt();
         }
 
         private static void UpdateMovie()
         {
-            MovieBusiness MovieBusiness = new MovieBusiness(_repository);
-            List<Movie> Movies;
-            Movie Movie;
-            int MovieID;
+            MovieBusiness movieBusiness = new MovieBusiness(_repository);
+            List<Movie> movies;
+            Movie movie;
+            int movieID;
 
-            using (MovieBusiness)
+            using (movieBusiness)
             {
-                Movies = MovieBusiness.SelectAll();
-                MovieID = ConsoleView.GetMovieID(Movies);
-                Movie = MovieBusiness.SelectById(MovieID);
-                Movie = ConsoleView.UpdateMovie(Movie);
-                MovieBusiness.Update(Movie);
+                movies = movieBusiness.SelectAll();
+                movieID = ConsoleView.GetMovieID(movieBusiness.SortByAscendingID());
+                movie = movieBusiness.SelectById(movieID);
+                movie = ConsoleView.UpdateMovie(movie);
+                if(movie!=null)
+                {
+                    movieBusiness.Update(movie);
+                }
             }
         }
 
         private static void DeleteMovie()
         {
-            MovieBusiness MovieBusiness = new MovieBusiness(_repository);
-            List<Movie> Movies;
-            int MovieID;
+            MovieBusiness movieBusiness = new MovieBusiness(_repository);
+            List<Movie> movies;
             string message;
 
-            using (MovieBusiness)
+            using (movieBusiness)
             {
-                Movies = MovieBusiness.SelectAll();
-                MovieID = ConsoleView.GetMovieID(Movies);
-                MovieBusiness.Delete(MovieID);
+                movies = movieBusiness.SelectAll();
+                Movie movie = movieBusiness.SelectById(ConsoleView.GetMovieID(movieBusiness.SortByAscendingID()));
+                
+                if (movie!= null && movie.ID != -2)
+                {
+                    if (ConsoleView.ValidateEdit(movie, "Delete", "Movie "+movie.ID))
+                    {
+                        movieBusiness.Delete(movie.ID);
+                        ConsoleView.DisplayReset();
+                        
+                        message = String.Format("Movie {0}: {1} has been deleted.", movie.ID,movie.Title);
+
+                        ConsoleView.DisplayMessage(message);
+                        ConsoleView.DisplayContinuePrompt();
+                    }
+                }
             }
-
-            ConsoleView.DisplayReset();
-
-            // TODO refactor
-            message = String.Format("Movie ID: {0} had been deleted.", MovieID);
-
-            ConsoleView.DisplayMessage(message);
-            ConsoleView.DisplayContinuePrompt();
+            
         }
 
         #endregion

@@ -42,7 +42,7 @@ namespace MovieOrganizer
                 }
                 else
                 {
-                    throw new ArgumentException("Argument must be a positive number", "ID");
+                    throw new ArgumentException("ID must be a positive number.");
                 }
             }
         }
@@ -59,7 +59,7 @@ namespace MovieOrganizer
                 }
                 else
                 {
-                    throw new ArgumentException("Argument must be greater than 2", "Title");
+                    throw new ArgumentException("Title length must be greater than 2 characters.");
                 }
             }
         }
@@ -84,7 +84,14 @@ namespace MovieOrganizer
             }
             set
             {
-                _release = value;
+                if(value.Year >= 1888)
+                {
+                    _release = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Movie release year must be 1888 or after.");
+                }
             }
         }
 
@@ -102,7 +109,7 @@ namespace MovieOrganizer
                 }
                 else
                 {
-                    throw new ArgumentException("Argument must be greater than 0","Minute Length");
+                    throw new ArgumentException("Movie length must be greater than 0 minutes.");
                 }
             }
         }
@@ -121,7 +128,7 @@ namespace MovieOrganizer
                 }
                 else
                 {
-                    throw new ArgumentException("Argument must be at least two words totaling a length of 5 or greater", "Director");
+                    throw new ArgumentException("Name must be at least two words totaling a length of 4 letters or greater.");
                 }
             }
         }
@@ -140,7 +147,7 @@ namespace MovieOrganizer
                 }
                 else
                 {
-                    throw new ArgumentException("Argument must be at least two words totaling a length of 5 or greater", "Producer");
+                    throw new ArgumentException("Name must be at least two words totaling a length of 4 letters or greater.");
                 }
             }
         }

@@ -1,10 +1,10 @@
-C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Application.exe.config
-C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Application.exe
-C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Application.pdb
-C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\obj\Debug\MovieOrganizer.csprojResolveAssemblyReference.cache
-C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\obj\Debug\Application.exe
-C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\obj\Debug\Application.pdb
 C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Data\Data.xml
 C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Data\firstNames.csv
 C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Data\lastNames.csv
 C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Data\titles.csv
+C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Application.exe.config
+C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Application.exe
+C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\bin\Debug\Application.pdb
+C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\obj\Debug\Application.exe
+C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\obj\Debug\Application.pdb
+C:\Users\Paul Jr\Documents\Paul\Classes\CIT255\CIT255FinalApplication\Application\obj\Debug\MovieOrganizer.csprojResolveAssemblyReference.cache

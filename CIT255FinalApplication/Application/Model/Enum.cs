@@ -34,6 +34,18 @@ namespace MovieOrganizer
             DeleteMovie,
             AddMovie,
             UpdateMovie,
+
+            SortQueryMovies,
+
+            QueryPersonByRole,
+            QueryByFirstLetter,
+            QueryByGenre,
+            QueryByReleaseYear,
+            SortByAscendingYear,
+            SortByDescendingYear,
+            SortByAscendingTitle,
+            SortByDescendingTitle,
+
             Quit
         }
 
