@@ -802,9 +802,12 @@ namespace MovieOrganizer
                         }
                         else if (ValidateEdit(movie, "Genre: ", gen.ToString()))
                         {
-                            if(gen!=Enum.Genre.None&&!movie.Genre.Contains(gen))
+                            if(!movie.Genre.Contains(gen))
                             {
-                                movie.Genre.Add(gen);
+                                if(gen != Enum.Genre.None)
+                                {
+                                    movie.Genre.Add(gen);
+                                }
                                 genres++;
                                 if (genres == 2)
                                 {
@@ -1521,7 +1524,12 @@ namespace MovieOrganizer
                 DisplayMessage("Current Genre(s):");
                 foreach (Enum.Genre gen in movie.Genre)
                 {
-                    DisplayMessage(gen.ToString());
+                    string movieGenre = gen.ToString();
+                    if (movieGenre.Contains("_"))
+                    {
+                        movieGenre = movieGenre.Replace('_', ' ');
+                    }
+                    DisplayMessage(movieGenre);
                 }
                 DisplayMessage("");
             }
@@ -1836,7 +1844,12 @@ namespace MovieOrganizer
                 if (genre != Enum.Genre.None)
                 {
                     i++;
-                    DisplayMessage(i + ". " + genre.ToString());
+                    string movieGenre = genre.ToString();
+                    if (movieGenre.Contains("_"))
+                    {
+                        movieGenre = movieGenre.Replace('_', ' ');
+                    }
+                    DisplayMessage(i + ". " + movieGenre);
                 }
             }
         }
